@@ -82,7 +82,7 @@ namespace DigitClassifier {
 
             #region 6. Example Solution(s)
             //foreach (var item in dataRecords.Take(1)) {
-            //    Visualiser.draw(item.Label.ToString(), item.Pixels);
+            //    Visualiser.Draw(item.Label.ToString(), item.Pixels);
             //}
             #endregion
 
@@ -223,14 +223,12 @@ namespace DigitClassifier {
             return 0;
 
             #region 9. Example Solution(s)
-            var nearestNeighbour =
-                trainingData
-                    .OrderBy(trainingDigit => calculateDistance(trainingDigit.Pixels, unknownPixels))
-                    .First();
+            //var nearestNeighbour =
+            //    trainingData
+            //        .OrderBy(trainingDigit => calculateDistance(trainingDigit.Pixels, unknownPixels))
+            //        .First();
 
-            return nearestNeighbour.Label;
-			
-			// k nearest?
+            //return nearestNeighbour.Label;
             #endregion
         }
     }

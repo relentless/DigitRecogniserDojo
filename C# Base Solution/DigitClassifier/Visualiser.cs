@@ -11,7 +11,7 @@ namespace DigitClassifier {
         const int tileSize = 20;
         const int characerSize = 28;
 
-        public static void draw( string text, int[] pixels) {
+        public static void Draw( string text, int[] pixels) {
 
             var form = new Form { TopMost = true, Visible = true, Width = 29 * tileSize, Height = 29 * tileSize };
                  
