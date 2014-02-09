@@ -57,8 +57,8 @@ dataRecords.[..2] |> Array.iter (fun digit -> draw (digit.Label.ToString()) digi
 // Let's keep say 900 records for training and 100 for validation.
 // Array splitting should come in handy again
 
-let trainingData = dataRecords.[..899]
-let validationData = dataRecords.[900..]
+let trainingData = dataRecords.[..1599]
+let validationData = dataRecords.[1600..]
 
 (******* 8. COMPUTING DISTANCES *******)
  
@@ -92,17 +92,6 @@ let classify (unknown:int[]) =
         |> Array.minBy (fun trainingDigit -> distance trainingDigit.Pixels unknown)
     
     nearestNeighbour.Label
-
-// k nearest
-//    let k = 5
-//
-//    trainingData
-//    |> Array.sortBy (fun trainingDigit -> distance trainingDigit.Pixels unknown)
-//    |> Seq.take k
-//    |> Seq.groupBy (fun record -> record.Label) // group by label (returns a tuple)
-//    |> Array.ofSeq
-//    |> Array.sortBy (fun (_,items) -> 0-(items |> Seq.length)) // sort by number per label
-//    |> (fun array -> fst array.[0])  // take thelabel of the first group
  
 (******* 10. SEE THE CLASSIFIER IN ACTION *******)
  

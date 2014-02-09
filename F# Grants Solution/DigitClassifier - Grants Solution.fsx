@@ -71,8 +71,7 @@ let classify_weighted (unknown:int[]) =
     |> Seq.groupBy (fun digit -> digit.Label )
     |> Seq.map (fun (label, group) -> label, group |> Seq.sumBy (fun digit -> 
         let dist = 1.0 / float (distance digit.Pixels unknown)
-        dist**16.0)) // best is between 16-22.
-        // presumably 16 is the same as k=1, not sure why it starts degrading after 22.
+        dist**16.0)) // best from 16 - presumably this is the same as k=1
     |> Seq.maxBy snd
     |> fst
 

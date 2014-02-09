@@ -88,7 +88,7 @@ let dataNumbers = dataValues |> Array.map (Array.map (int))
 
 // How will we see if our algorithm works?  We need to take our known character data and split
 // it into 'training data' and the 'validation set'.
-// Let's keep say 900 records for training and 100 for validation.
+// Let's keep say 1600 records for training and 400 for validation.
 // Array splitting should come in handy again
 
 // 7. [ YOUR CODE GOES HERE! ]
@@ -154,13 +154,16 @@ let dataNumbers = dataValues |> Array.map (Array.map (int))
 
 (******* 12. Next Steps ********)
 // Once you have something working, there are many things you can try to do:
-// - Try higher values of k
-// - Improve the distance calculation (compare each pixel, 
-//     euclidian distance (distance of each pixel squared), distance of each pixel to other powers, 
-//     blur the images, downsize the images)
-// - Make it faster (use the #time directive to turn timing on in FSI)
-// - Productionise your code
-// - Submit your classifier to Kaggle
+// - Try higher values of k (more neighbours)
+// - Improve the distance calculation (
+//     compare each pixel, 
+//     euclidian distance (distance of each pixel squared), 
+//     distance of each pixel to other powers)
+// - Try other things to improve the score (e.g.
+//     blur the images, 
+//     downsize the images)
+// - Make it faster (you can use a StopWatch to see how long things take)
+// - Submit your classifier to Kaggle (http://www.kaggle.com/competitions)
 
 // There are many more hours of machine learning fun to be had, even for this simple problem.
 // Enjoy!

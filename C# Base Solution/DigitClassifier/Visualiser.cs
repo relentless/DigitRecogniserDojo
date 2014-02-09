@@ -36,7 +36,6 @@ namespace DigitClassifier {
 
             Application.EnableVisualStyles();
             Application.Run(form);
-            //form.Show();
         }
     }
 }

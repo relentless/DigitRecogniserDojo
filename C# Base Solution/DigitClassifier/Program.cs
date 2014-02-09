@@ -90,7 +90,7 @@ namespace DigitClassifier {
 
             // How will we see if our algorithm works?  We need to take our known character data and split
             // it into 'training data' and the 'validation set'.
-            // Let's keep say 900 records for training and 100 for validation.
+            // Let's keep say 1600 records for training and 400 for validation.
 
             #region 7. Hints
             // Take() and Skip() should come in handy again
@@ -99,8 +99,8 @@ namespace DigitClassifier {
             // [ YOUR CODE GOES HERE! ]
 
             #region 7. Example Solution(s)
-            //var trainingData = dataRecords.Take(900);
-            //var validationData = dataRecords.Skip(900);
+            //var trainingData = dataRecords.Take(1600);
+            //var validationData = dataRecords.Skip(1600);
             #endregion
 
             /******* 8. COMPUTING DISTANCES *******/
@@ -144,14 +144,12 @@ namespace DigitClassifier {
             //Console.WriteLine("Percent correct: {0}%", fractionCorrect * 100);
             #endregion
 
-            // Oh Noes!  This is reeeealy slow..
 
-            // If this is going too slowly (e.g. no results within a minute), 
+            // If this is going too slowly (e.g. no results within a couple of minutes), 
             // you might want to try a couple of things to get acceptable performance:
             // - Use arrays instead of enumerables.  Sticking a ToArray() in there should help,
             // especially when you convert to DigitRecords. (Otherwise data will be loaded lazily, and
             // could be done several times unnecessarily).
-            // - Do the calculation on, say, 20 records instead of 100
             // - Make your distance calculation faster
 
             Console.WriteLine("Press any key to exit");
@@ -162,13 +160,16 @@ namespace DigitClassifier {
 
             /******* 12. NEXT STEPS *******/
             // Once you have something working, there are many things you can try to do:
-            // - Try higher values of k
-            // - Improve the distance calculation (compare each pixel, 
-            //     euclidian distance (distance of each pixel squared), distance of each pixel to other powers, 
-            //     blur the images, downsize the images)
-            // - Make it faster (remmeber to use a StopWatch to see how long things take)
-            // - Productionise your code
-            // - Submit your classifier to Kaggle
+            // - Try higher values of k (more neighbours)
+            // - Improve the distance calculation (
+            //     compare each pixel, 
+            //     euclidian distance (distance of each pixel squared), 
+            //     distance of each pixel to other powers)
+            // - Try other things to improve the score (e.g.
+            //     blur the images, 
+            //     downsize the images)
+            // - Make it faster (you can use a StopWatch to see how long things take)
+            // - Submit your classifier to Kaggle (http://www.kaggle.com/competitions)
 
             // There are many more hours of machine learning fun to be had, even for this simple problem.
             // Enjoy!
@@ -242,8 +243,8 @@ namespace DigitClassifier {
         // [ YOUR CODE GOES HERE! ]
 
         #region 5. Example Solution(s)
-        public int Label { get; set; }
-        public int[] Pixels { get; set; }
+        //public int Label { get; set; }
+        //public int[] Pixels { get; set; }
         #endregion
     }
 }
