@@ -34,8 +34,6 @@ def Draw (text, pixels):
 
     else:
 
-        print("Drawing pixels...")
-
         root = Tk()
         root.title(text)
 

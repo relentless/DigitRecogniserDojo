@@ -1,4 +1,9 @@
-import os
+import os           # You need this for file import of training data
+import Visualiser   # This is included in the tutorial code as an additional module,
+                    # adding a function to show pixel data graphically
+import math         # You're likely to need the math library for distance calculations
+import time         # The time.time() function is useful for getting start and end times (in seconds since epoch)
+                    # on processes we may want to optimise
 
 def Main():
     
@@ -7,14 +12,12 @@ def Main():
     I've tried to avoid code that won't work in Python 2 but have only tested in v3.
     """
 
-
     # Follow the steps below to implement your digit classifier.
     # If you need a bit of help, scroll down to the bottom of this script and check out the hints.
-    # If you need even more, there are also some example solutions.
+    # If you need even more, example solutions are also provided in a separate script file.
 
 
     #   ******* 0. GETTING TO KNOW YOUR DATA *******
-
     # First let's have a look at "trainingsample.csv".  Understand the format, 
     # so you know what you're working with.
     # Each line has the digit (0-9), then 784 numbers representing pixels, with
@@ -22,26 +25,22 @@ def Main():
 
 
     #   ******* 1. READING THE DATA *******
-
     # First let's read the contents of "trainingsample.csv" into an array, one element per line
     dataLines = open(os.path.join(os.getcwd(), os.pardir, "data", "trainingsample.csv")).readlines()
     
 
     #   ******* 2. CLEANING UP HEADERS *******
-
     # Did you notice that the file has a header? We want to get rid of it.
     dataNoHeader = dataLines[1:]    
 
 
     #   ******* 3. EXTRACTING COLUMNS *******
-
     # Each line of the file is a comma-separated list of numbers.
     # Break each line of the file into an array of strings.
     dataValues = [line.split(',') for line in dataNoHeader]
 
     
     #   ******* 4. CONVERTING FROM STRINGS TO INTS *******
-
     # In C# we would now have an array containing arrays of strings,
     # and would need to transform it into an array of arrays of integers.
     # Python does not use static types - we could just go ahead and see what happens
@@ -53,7 +52,6 @@ def Main():
 
 
     #   ******* 5. CONVERTING ARRAYS TO CLASSES *******/
-
     # Rather than dealing with a raw array of ints,
     # for convenience let's store these into an array of something a bit more structured.
     # A class called 'DigitRecord' has been started for your convenience - let's use that.
@@ -62,16 +60,13 @@ def Main():
 
 
     #   ******* 6. LET'S SEE SOME DIGITS! *******
- 
     # Now we have things structured sensibly, if you want, you can have a look at some digits.
-    # The Visualier module has a draw function that can be called like so:
-    # import Visualiser                 (at module level)
-    # Draw("title", digit.Pixels)       (within Main())
-    # Note: just draw one at a time, unless you want to spend the next 10 minutes closing 1000 windows!
+    # The Visualiser module (imported above) has a draw function that can be called like so:
+    #   Visualiser.Draw("title", digit.Pixels)
+    # Note: just draw one (or a small number) at a time, unless you want to spend the next 10 minutes closing 1000 windows!
 
 
     #   ******* 7. TRAINING vs VALIDATION DATA *******
-
     # How will we see if our algorithm works?  We need to take our known character data and split
     # it into 'training data' and the 'validation set'.
     # Let's keep say 1600 records for training and 400 for validation.
@@ -80,19 +75,16 @@ def Main():
 
 
     #   ******* 8. COMPUTING DISTANCES *******
-    
     # We need to compute the distance between two images, so we cann see what the 'closest' ones are.
     # Go and implement the calculateDistance() function below.  We'll use it in the next step.
 
     
     #   ******* 9. WRITING THE CLASSIFIER FUNCTION *******
-
     # We are now ready to write the classifier!
     # Go and implement the classify() function below. We'll use it in the next step.
 
 
     #   ******* 10. SEE THE CLASSIFIER IN ACTION *******
-    
     # Now that we have a classifier, let's see it in action.
     # For each example in the validation set, we can use the classifier to predict
     # the digit.  Let's take, say, the first 20 classifications and see if it seems to be working
@@ -101,8 +93,7 @@ def Main():
     # [ YOUR CODE GOES HERE! ]
 
 
-    # 11. EVALUATING THE MODEL AGAINST VALIDATION DATA *******
-    
+    #   ******* 11. EVALUATING THE MODEL AGAINST VALIDATION DATA *******
     # Let's judge with a little more accuracy how good our classifier is. 
     # Let's classify all of the validation records, and work out the % correctly predicted.
     
@@ -170,8 +161,8 @@ def classify (trainingData, unknownPixels):
 class DigitRecord:
 
     # To implement later - wait for Step 5!
-
     # You'll want a data attribute for the class (often called the 'Label'), and one for the Pixels.
+    # Note if you're more used to C# - Python doesn't really do encapsulation, all members are public.
 
     # [ YOUR CODE GOES HERE! ]
     
@@ -195,21 +186,3 @@ if __name__ == '__main__':
     # "Calculate Distance" function
 
     # "Classify" function
-
-    
-
-#   ******* EXAMPLE SOLUTIONS *******
-
-    # Converting arrays to classes (calling from Main())
-
-    # "Digit Record" class implementation
-
-    # Visualising digits
-
-    # Splitting training & validation data
-
-    # "Classify" function
-
-    # See the classifier in action
-
-    # Evaluating the model against validation data
