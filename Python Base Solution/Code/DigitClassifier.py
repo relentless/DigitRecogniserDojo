@@ -1,6 +1,4 @@
-import sys
 import os
-import math
 
 def Main():
     
@@ -8,6 +6,12 @@ def Main():
     Ported to Python from Grant Crofton's C# version - http://goo.gl/q6Qouw - by Alex Garland.
     I've tried to avoid code that won't work in Python 2 but have only tested in v3.
     """
+
+
+    # Follow the steps below to implement your digit classifier.
+    # If you need a bit of help, scroll down to the bottom of this script and check out the hints.
+    # If you need even more, there are also some example solutions.
+
 
     #   ******* 0. GETTING TO KNOW YOUR DATA *******
 
@@ -48,106 +52,62 @@ def Main():
     dataNumbers = [[int(element) for element in line] for line in dataValues]
 
 
-
-
-###     TODO - pretty much everything from here on down needs further rework as of 24/4/2014    ###
-
     #   ******* 5. CONVERTING ARRAYS TO CLASSES *******/
 
     # Rather than dealing with a raw array of ints,
     # for convenience let's store these into an array of something a bit more structured.
     # A class called 'DigitRecord' has been started for your convenience - let's use that.
 
-##            #region 5. Hints
-##            // myCollection.Select again!
-##            // To create a new instance of a class, new MyClass { Property1 = "hi", Property2 = [1,2,3] }
-##            // Methods like Skip(), Take() and First() could come in handy.
-##            // myCollection.ToArray() might also be useful.
-##            #endregion
-
     # [ YOUR CODE GOES HERE! ]
-
-##            #region 5. Example Solution(s)
-##            //var dataRecords = dataNumbers.Select( items => 
-##            //    new DigitRecord { Label = items.First(), Pixels = items.Skip(1).ToArray() }
-##            //    ).ToArray(); // Making it an array at this stage can speed things up a fair bit
-##            #endregion
 
 
     #   ******* 6. LET'S SEE SOME DIGITS! *******
  
     # Now we have things structured sensibly, if you want, you can have a look at some digits.
-    # There's a Visualiser class, which has a draw function that can be called like so:
-    # Visualiser.Draw( "title", digit.Pixels);
+    # The Visualier module has a draw function that can be called like so:
+    # import Visualiser                 (at module level)
+    # Draw("title", digit.Pixels)       (within Main())
     # Note: just draw one at a time, unless you want to spend the next 10 minutes closing 1000 windows!
 
-##    region 6. Example Solution(s)
-##            //foreach (var item in dataRecords.Take(1)) {
-##            //    Visualiser.Draw(item.Label.ToString(), item.Pixels);
-##            //}
-##            #endregion
+
+    #   ******* 7. TRAINING vs VALIDATION DATA *******
+
+    # How will we see if our algorithm works?  We need to take our known character data and split
+    # it into 'training data' and the 'validation set'.
+    # Let's keep say 1600 records for training and 400 for validation.
+
+    # [ YOUR CODE GOES HERE! ]
 
 
-##            /******* 7. TRAINING vs VALIDATION DATA *******/
-##
-##            // How will we see if our algorithm works?  We need to take our known character data and split
-##            // it into 'training data' and the 'validation set'.
-##            // Let's keep say 1600 records for training and 400 for validation.
-##
-##            #region 7. Hints
-##            // Take() and Skip() should come in handy again
-##            #endregion
-##
-##            // [ YOUR CODE GOES HERE! ]
-##
-##            #region 7. Example Solution(s)
-##            //var trainingData = dataRecords.Take(1600);
-##            //var validationData = dataRecords.Skip(1600);
-##            #endregion
-##
-##            /******* 8. COMPUTING DISTANCES *******/
-##
-##            // We need to compute the distance between two images, so we cann see what the 'closest' ones are.
-##            // Go and implement the calculateDistance() method below.  We'll use it in the next step.
-##
-##            /******* 9. WRITING THE CLASSIFIER FUNCTION *******/
-##
-##            // We are now ready to write the classifier!
-##            // Go and implement the classify() method below. We'll use it in the next step.
-##
-##            /******* 10. SEE THE CLASSIFIER IN ACTION *******/
-##
-##            // Now that we have a classifier, let's see it in action.
-##            // For each example in the validation set, we can use the classifier to predict
-##            // the digit.  Let's take, say, the first 20 classifications and see if it seems to be working
-##            // by writing the actual and preicted values to the console.
-##
-##            // [ YOUR CODE GOES HERE! ]
-##
-##            #region 10. Example Solution(s)
-##            //validationData
-##            //    .Take(20)
-##            //    .ToList()
-##            //    .ForEach(validationDigit =>
-##            //        Console.WriteLine("Actual: {0}, Predicted: {1}", validationDigit.Label, classify(trainingData, validationDigit.Pixels)));
-##            #endregion
-##
-##            /******* 11. EVALUATING THE MODEL AGAINST VALIDATION DATA *******/
-##
-##            // Let's judge with a little more accuracy how good our classifier is. 
-##            // Let's classify all of the validation records, and work out the % correctly predicted.
-##
-##            // [ YOUR CODE GOES HERE! ]
-##
-##            #region 11. Example Solution(s)
-##            //var fractionCorrect = validationData.Average(validationDigit =>
-##            //    classify(trainingData, validationDigit.Pixels) == validationDigit.Label ? 1.0 : 0.0);
-##
-##            //Console.WriteLine("Percent correct: {0}%", fractionCorrect * 100);
-##            #endregion
+    #   ******* 8. COMPUTING DISTANCES *******
+    
+    # We need to compute the distance between two images, so we cann see what the 'closest' ones are.
+    # Go and implement the calculateDistance() function below.  We'll use it in the next step.
+
+    
+    #   ******* 9. WRITING THE CLASSIFIER FUNCTION *******
+
+    # We are now ready to write the classifier!
+    # Go and implement the classify() function below. We'll use it in the next step.
 
 
-        
+    #   ******* 10. SEE THE CLASSIFIER IN ACTION *******
+    
+    # Now that we have a classifier, let's see it in action.
+    # For each example in the validation set, we can use the classifier to predict
+    # the digit.  Let's take, say, the first 20 classifications and see if it seems to be working
+    # by writing the actual and preicted values to the console.
+    
+    # [ YOUR CODE GOES HERE! ]
+
+
+    # 11. EVALUATING THE MODEL AGAINST VALIDATION DATA *******
+    
+    # Let's judge with a little more accuracy how good our classifier is. 
+    # Let's classify all of the validation records, and work out the % correctly predicted.
+    
+    # [ YOUR CODE GOES HERE! ]
+
 
     # CONGRATULATIONS!  Hopefully, you have a working digit classifier.
     # Want to make it better?  See some suggestions below..
@@ -162,7 +122,7 @@ def Main():
     #   - Try other things to improve the score (e.g.
     #       blur the images, 
     #       downsize the images)
-    #   - Make it faster (you can use a StopWatch to see how long things take)
+    #   - Make it faster - obviously as a dynamic language Python may not be the fastest implementation option...
     #   - Submit your classifier to Kaggle (http://www.kaggle.com/competitions)
 
     # There are many more hours of machine learning fun to be had, even for this simple problem.
@@ -178,16 +138,14 @@ def calculateDistance (testDigit, knownDigit):
     # can make it better/faster?
 
     # Suggestions, in order of complexity:
-    # Return a hard-coded number
-    # Sum the pixels of each and use the different between the sums
-    # Compare each pixel and add up the differences
-    # Use Euclidean distance (each pixel difference^2), or some other power
+    #   - Return a hard-coded number
+    #   - Sum the pixels of each and use the different between the sums
+    #   - Compare each pixel and add up the differences
+    #   - Use Euclidean distance (each pixel difference^2), or some other power
 
     # [ YOUR CODE GOES HERE! ]
 
-    int(0)     # return value - replace 0 with the result of your calculation
-
-    # Scroll down to bottom of the file for example solution - difference between all pixels added together
+    0     # Dummy return value - replace with the result of your calculationn
 
 
 
@@ -195,34 +153,29 @@ def classify (trainingData, unknownPixels):
 
      # To implement later - wait for Step 9!
 
-
      # The classifier should search for the 'closest' example in our training data,
      # and use that as the predicted classification of the unknown image.
      # Which is the closest?  calculateDistance() should tell us!
-
 
      # This is where the 'k' of KNN comes in - k defines how many of the closest training data
      # records we use to predict the unknown digit.  For now, let's just use the closest example,
      # to keep things simple (so k=1).
 
-    # TODO - we have a C# hint "myCollection.OrderBy() takes a lambda which can be used to get the collection sorted how we like"
-    # We could do with a Python equivalent.
-
     # [ YOUR CODE GOES HERE! ]
 
-
-    0   # return value - replace 0 with the result of your calculation
-
+    0   # Dummy return value - replace with the result of your calculation
 
 
-# class DigitRecord:
+
+class DigitRecord:
+
     # To implement later - wait for Step 5!
 
     # You'll want a data attribute for the class (often called the 'Label'), and one for the Pixels.
 
     # [ YOUR CODE GOES HERE! ]
     
-
+    0   # Replace/ remove once you have some real code here
 
 
 
@@ -233,21 +186,30 @@ if __name__ == '__main__':
 
 
 
+#   ******* HINTS *******
+
+    # Converting arrays to classes
+
+    # Splitting training & validation data
+
+    # "Calculate Distance" function
+
+    # "Classify" function
+
+    
 
 #   ******* EXAMPLE SOLUTIONS *******
 
-#   calculateDistance function - difference between all pixels added together
-#   math.fabs(sum(testDigit) - sum(knownDigit)
+    # Converting arrays to classes (calling from Main())
 
+    # "Digit Record" class implementation
 
-##            #region 9. Example Solution(s)
-##            //var nearestNeighbour =
-##            //    trainingData
-##            //        .OrderBy(trainingDigit => calculateDistance(trainingDigit.Pixels, unknownPixels))
-##            //        .First();
-##
-##
-##            //return nearestNeighbour.Label;
-##            #endregion
-##        }
-##    }
+    # Visualising digits
+
+    # Splitting training & validation data
+
+    # "Classify" function
+
+    # See the classifier in action
+
+    # Evaluating the model against validation data
