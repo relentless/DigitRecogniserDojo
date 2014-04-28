@@ -8,8 +8,8 @@ import time         # The time.time() function is useful for getting start and e
 def Main():
     
     """Framework code for tutorial creating a digit classifier using K-Nearest-Neighbours.
-    Ported to Python from Grant Crofton's C# version - http://goo.gl/q6Qouw - by Alex Garland.
-    I've tried to avoid code that won't work in Python 2 but have only tested in v3.
+    Ported to Python from Grant Crofton's C# version by Alex Garland - www.alexdgarland.com - twitter @alexdgarland
+    Tested on Python versions 3.3.0 and 2.7.5, Windows and Linux (Fedora 20).
     """
 
     # Follow the steps below to implement your digit classifier.
@@ -26,7 +26,7 @@ def Main():
 
     #   ******* 1. READING THE DATA *******
     # First let's read the contents of "trainingsample.csv" into an array, one element per line
-    dataLines = open(os.path.join(os.getcwd(), os.pardir, "data", "trainingsample.csv")).readlines()
+    dataLines = open(os.path.join(os.getcwd(), os.pardir, "Data", "trainingsample.csv")).readlines()
     
 
     #   ******* 2. CLEANING UP HEADERS *******
@@ -43,8 +43,10 @@ def Main():
     #   ******* 4. CONVERTING FROM STRINGS TO INTS *******
     # In C# we would now have an array containing arrays of strings,
     # and would need to transform it into an array of arrays of integers.
+    
     # Python does not use static types - we could just go ahead and see what happens
     # when we try and use the elements as integers later in our code.
+    
     # However, if we want to ensure at this stage that each element is an integer
     # - throwing an error if not - we can do something like this
     # (type coercion within a nested list comprehension):    
@@ -128,12 +130,6 @@ def calculateDistance (testDigit, knownDigit):
     # Why not start simple, and once you've got everything working, see if you
     # can make it better/faster?
 
-    # Suggestions, in order of complexity:
-    #   - Return a hard-coded number
-    #   - Sum the pixels of each and use the different between the sums
-    #   - Compare each pixel and add up the differences
-    #   - Use Euclidean distance (each pixel difference^2), or some other power
-
     # [ YOUR CODE GOES HERE! ]
 
     0     # Dummy return value - replace with the result of your calculationn
@@ -142,15 +138,15 @@ def calculateDistance (testDigit, knownDigit):
 
 def classify (trainingData, unknownPixels):
 
-     # To implement later - wait for Step 9!
+    # To implement later - wait for Step 9!
 
-     # The classifier should search for the 'closest' example in our training data,
-     # and use that as the predicted classification of the unknown image.
-     # Which is the closest?  calculateDistance() should tell us!
+    # The classifier should search for the 'closest' example in our training data,
+    # and use that as the predicted classification of the unknown image.
+    # Which is the closest?  calculateDistance() should tell us!
 
-     # This is where the 'k' of KNN comes in - k defines how many of the closest training data
-     # records we use to predict the unknown digit.  For now, let's just use the closest example,
-     # to keep things simple (so k=1).
+    # This is where the 'k' of KNN comes in - k defines how many of the closest
+    # training data records we use to predict the unknown digit.  For now,
+    # let's just use the closest example, to keep things simple (so k=1).
 
     # [ YOUR CODE GOES HERE! ]
 
@@ -161,8 +157,10 @@ def classify (trainingData, unknownPixels):
 class DigitRecord:
 
     # To implement later - wait for Step 5!
-    # You'll want a data attribute for the class (often called the 'Label'), and one for the Pixels.
-    # Note if you're more used to C# - Python doesn't really do encapsulation, all members are public.
+    # You'll want a data attribute for the class (often called the 'Label'),
+    # and one for the Pixels.
+    # Note if you're more used to C# - Python doesn't really do encapsulation,
+    # all members are publicly accessible.
 
     # [ YOUR CODE GOES HERE! ]
     
@@ -171,7 +169,8 @@ class DigitRecord:
 
 
 # Standard Python boilerplate;
-# This line executes the main method when this file is called directly (rather than as a library).
+# This line executes the main method when this file is called directly
+# (rather than as a library).
 if __name__ == '__main__':
     Main()
 
@@ -179,10 +178,58 @@ if __name__ == '__main__':
 
 #   ******* HINTS *******
 
+    # This is really a mixture of syntax that may help if you don't often use Python,
+    # and some clues as to approach for the machine learning problem.
+
+
     # Converting arrays to classes
-
+	
+    # You can assign the class members using a basic constructor -
+    # 	(def __init__(self, <explicit arguments...>: ...)
+    # or simply access the members directly,
+    # Python doesn't fully encapsulate anything so no need to implement properties.
+    # The slice notation mentioned below may also be useful for splitting the data record.
+	
+	
     # Splitting training & validation data
+	
+    # You can take a slice into an array - i.e. a specified section of the elements -
+    # by using simple notation "mydata[startindex:stopindex]";
+    # 	e.g. mydata[1:5] gets elements with zero-based indices 1, 2, 3 and 4.
+    # You can also do this first n elements as "mydata[:n]",
+    # or all elements from index n onwards as "[n:]".
 
+	
     # "Calculate Distance" function
+	
+    # Suggestions, in order of complexity:
+    #   - Return a hard-coded number
+    #   - Sum the pixels of each and use the different between the sums
+    #   - Compare each pixel and add up the differences
+    #   - Use Euclidean distance (each pixel difference^2), or some other power
 
+    # The "zip" function takes two lists (or other iterables) and returns a list
+    # of tuples, where each tuple at position n is made up of (list1[n], list2[n])
+    # (up to the length of the shorter of the two lists).
+    # e.g. zip([1, 2, 3], [4, 5, 6, 7]) returns [(1, 4), (2, 5), (3, 6)]
+    # This could be useful for comparing each pixel in turn.
+
+	
     # "Classify" function
+	
+    # The "sorted" function in Python
+    # (which takes a list or other iterable, and returns it as an ordered list)
+    # has a version which takes a function or lambda as its second argument.
+    # This can be used to control and alter the key used to sort this list.
+    # e.g. "sorted(['spam', 'sausage', 'beans'], key = lambda word: word[-1])"
+    # sorts by the second letter of each word, returning "['sausage', 'beans', 'spam']".
+	
+	
+    # Bonus hint
+	
+    # List comprehensions ("<expression>(item) for item in iterable") are often a good way
+    # to transform one collection into another without writing a "for" loop.
+    # There are some examples in the code already written for the tutorial,
+    # including a demonstration of how they can be nested.
+	
+	
