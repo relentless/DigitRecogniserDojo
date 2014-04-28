@@ -14,7 +14,7 @@ def Main():
 
 
     #   ******* 1. READING THE DATA *******
-    dataLines = open(os.path.join(os.getcwd(), os.pardir, "data", "trainingsample.csv")).readlines()
+    dataLines = open(os.path.join(os.getcwd(), os.pardir, "Data", "trainingsample.csv")).readlines()
     
     #   ******* 2. CLEANING UP HEADERS *******
     dataNoHeader = dataLines[1:]    
@@ -51,9 +51,8 @@ def Main():
 
     #   ******* 10. SEE THE CLASSIFIER IN ACTION *******
     numberToValidate = 10  # So we can limit the number it runs
-    
-    [print("Actual: {0}, Predicted: {1}".format(validationRecord.Label, classify(trainingData, validationRecord.Pixels)))
-     for validationRecord in validationData[:numberToValidate]]
+    for validationRecord in validationData[:numberToValidate]:
+        print("Actual: {0}, Predicted: {1}".format(validationRecord.Label, classify(trainingData, validationRecord.Pixels)))
 
 
     #   ******* 11. EVALUATING THE MODEL AGAINST VALIDATION DATA *******
@@ -69,7 +68,8 @@ def Main():
 
     #   *******     OUTPUT      *******
     #   Percentage correct: 88.75%
-    #   Completed in 458.67 seconds     (on an Intel 987 (1.5GHz), would be faster on a more powerful processor)
+    #   Completed in 458.67 seconds     (Intel 987 (1.5GHz))
+    #   Completed in 203.33 seconds     (Intel T4400 (2.2GHz))
 
     # So - the hit rate is respectable, but even at this level of complexity it takes a decent amount of time to run.
     # Can it be optimised?
