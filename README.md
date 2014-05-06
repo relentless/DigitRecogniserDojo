@@ -1,7 +1,7 @@
 DigitRecogniserDojo
 ===================
 
-These are the base solutions, in C# and F#, for the 'KNN Digits Recogniser' dojo.  There's also a completed solution in F#.
+These are the base solutions, in a variety of languages, for the 'KNN Digits Recogniser' dojo.  Most include an example completed solution.
 
 #### Other useful links
 
@@ -15,5 +15,3 @@ These are the base solutions, in C# and F#, for the 'KNN Digits Recogniser' dojo
 
 Python base solution and example code added May 2014 by Alex Garland.
 These should work in anything >= Python 2.7, on Windows or Linux.
-
-For more information on Python syntax, check out [docs.python.org](https://docs.python.org/)
