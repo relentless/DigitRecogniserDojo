@@ -23,4 +23,4 @@ Java version made with v7.  Done in IntelliJ IDEA, but you should be able to jus
 
 *******************************************************************************
 
-PHP version by [Alfonsas Cirtautas](https://github.com/acirtautas).
+PHP version by [Alfonsas Cirtautas](https://github.com/acirtautas). Works with PHP 5.4 and up, code should be executed in cli.
