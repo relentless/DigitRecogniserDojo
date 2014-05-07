@@ -1,5 +1,7 @@
 <?php
 
+ini_set('memory_limit', '1024M'); // Increse memory limit
+
 require 'Visualizer.php';  // This is included in the tutorial code as an additional module,
 
 /**
@@ -52,12 +54,7 @@ $dataNumbers = array_map( function ($stringArray) { return array_map('intval', $
 // for convenience let's store these into an array of something a bit more structured.
 // A class called 'DigitRecord' has been started for your convenience - let's use that.
 
-// TODO: 5. Hints
-
 // [ YOUR CODE GOES HERE! ]
-
-// 5. Example Solution(s)
-// $dataRecords = array_map( function ($numberRow) { return new DigitalRecord(array_shift($numberRow), $numberRow);}, $dataNumbers);
 
 /******* 6. LET'S SEE SOME DIGITS! *******/
 
@@ -65,24 +62,13 @@ $dataNumbers = array_map( function ($stringArray) { return array_map('intval', $
 // There's a Visualiser class, which has a draw function that can be called like so:
 // Visualiser::Draw( "title", $digit->Pixels);
 
-// 6. Example Solution(s)
-// foreach ($dataRecords as $item) {
-//    Visualiser::Draw($item->Label, $item->Pixels);
-// }
-
 /******* 7. TRAINING vs VALIDATION DATA *******/
 
 // How will we see if our algorithm works?  We need to take our known character data and split
 // it into 'training data' and the 'validation set'.
 // Let's keep say 1600 records for training and 400 for validation.
 
-// TODO: 7. Hints
-
 // [ YOUR CODE GOES HERE! ]
-
-// 7. Example Solution(s)
-// $trainingData   = array_slice($dataRecords, 0, 1600);
-// $validationData = array_slice($dataRecords, 1600);
 
 /******* 8. COMPUTING DISTANCES *******/
 
@@ -103,16 +89,12 @@ $dataNumbers = array_map( function ($stringArray) { return array_map('intval', $
 
 // [ YOUR CODE GOES HERE! ]
 
-// TODO: 10. Example Solution(s)
-
 /******* 11. EVALUATING THE MODEL AGAINST VALIDATION DATA *******/
 
 // Let's judge with a little more accuracy how good our classifier is.
 // Let's classify all of the validation records, and work out the % correctly predicted.
 
 // [ YOUR CODE GOES HERE! ]
-
-// TODO: 11. Example Solution(s)
 
 // If this is going too slowly (e.g. no results within a couple of minutes),
 // you might want to try to make your distance calculation faster
@@ -149,13 +131,9 @@ function calculateDistance( $testDigit, $knownDigit) {
     // Why not start simple, and once you've got everything working, see if you
     // can make it better/faster?
 
-    // TODO: 8. Hints
-
     // [ YOUR CODE GOES HERE! ]
 
     return 0;
-
-    // TODO: 8. Example Solution(s)
 }
 
 /**
@@ -175,13 +153,9 @@ function classify ($trainingData, $unknownPixels) {
     // records we use to predict the unknown digit.  For now, let's just use the closest example,
     // to keep things simple (so k=1).
 
-    // TODO: 9. Hints
-
     // [ YOUR CODE GOES HERE! ]
 
     return 0;
-
-    // TODO 9. Example Solution(s)
 }
 
 class DigitRecord {
@@ -190,8 +164,4 @@ class DigitRecord {
     // You'll want a property for the class (often called the 'Label'), and one for the Pixels.
 
     // [ YOUR CODE GOES HERE! ]
-
-    // 5. Example Solution(s)
-    // public $Label;
-    // public $Pixels = [];
 }
