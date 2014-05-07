@@ -15,3 +15,7 @@ These are the base solutions, in a variety of languages, for the 'KNN Digits Rec
 
 Python base solution and example code added May 2014 by Alex Garland.
 These should work in anything >= Python 2.7, on Windows or Linux.
+
+*******************************************************************************
+
+Java version made with v7.  Done in IntelliJ IDEA, but you should be able to just use Main.java in whatever IDE you want.
