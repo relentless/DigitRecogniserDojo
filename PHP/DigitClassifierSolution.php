@@ -1,5 +1,5 @@
 <?php
-
+ini_set('memory_limit', '1024M'); 
 require 'Visualizer.php';
 
 // 1. READING THE DATA
@@ -89,7 +89,6 @@ function classify($trainingData, $unknownPixels)
 
 $predicted = classify($trainingData, $validationData[0]->Pixels);
 
-
 // 11. EVALUATING THE MODEL AGAINST VALIDATION DATA
 
 $processed = $matched = $accuracy = 0;
@@ -105,9 +104,8 @@ foreach ($validationData as $i => $record) {
 
     $accuracy = round(($matched / $processed) * 100, 2);
 
-
-    //Visualiser::Draw("$predicted == $actual ?" , $record->Pixels);
-    echo "Actual: $actual,  Predicted: $predicted, Accuracy: $accuracy %", PHP_EOL;
+    //Visualiser::Draw("$actual == $predicted ?" , $record->Pixels);
+    echo "Actual: $actual, Predicted: $predicted, Accuracy: $accuracy %", PHP_EOL;
 }
 
 // 12. NEXT STEPS
