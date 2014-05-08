@@ -13,7 +13,7 @@ These are the base solutions, in a variety of languages, for the 'KNN Digits Rec
 
 *******************************************************************************
 
-Python base solution and example code added May 2014 by [Alex Garland](https://github.com/alexdgarland).
+Python base solution and example code added May 2014 by Alex Garland @alexdgarland.
 These should work in anything >= Python 2.7, on Windows or Linux.
 
 *******************************************************************************
@@ -23,4 +23,5 @@ Java version made with v7.  Done in IntelliJ IDEA, but you should be able to jus
 
 *******************************************************************************
 
-PHP version by [Alfonsas Cirtautas](https://github.com/acirtautas).
+PHP version by Alfonsas Cirtautas @acirtautas.
+Works with PHP 5.4 and up, code should be executed in cli.
