@@ -26,9 +26,8 @@ PHP version by [Alfonsas Cirtautas](https://github.com/acirtautas). Works with P
 
 *******************************************************************************
 
-<<<<<<< HEAD
-PHP version by Alfonsas Cirtautas @acirtautas.
-Works with PHP 5.4 and up, code should be executed in cli.
-=======
-Scala version, by [Matt Russel](https://github.com/mdr), is an implementation from a workshop and not a guided script like the rest.
->>>>>>> 6bcc512ef485f74f7d14b3657e046ccffe6bc17c
+Scala version by [Matt Russel](https://github.com/mdr), is an implementation from a workshop and not a guided script like the rest.
+
+*******************************************************************************
+
+Ruby version, only partially complete so far, by Gwen Diagram
