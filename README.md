@@ -20,7 +20,10 @@ These should work in anything >= Python 2.7, on Windows or Linux.
 
 Java version made with v7.  Done in IntelliJ IDEA, but you should be able to just use Main.java in whatever IDE you want.
 
-
 *******************************************************************************
 
 PHP version by [Alfonsas Cirtautas](https://github.com/acirtautas). Works with PHP 5.4 and up, code should be executed in cli.
+
+*******************************************************************************
+
+Scala version, by [Matt Russel](https://github.com/mdr), is an implementation from a workshop and not a guided script like the rest.
