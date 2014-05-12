@@ -67,10 +67,12 @@ function calculateDistance($testDigit, $knownDigit)
     $pixels   = count($testDigit);
     $distance = 0;
     for ($i = 0; $i < $pixels; $i++) {
-        $distance += abs($testDigit[$i] - $knownDigit[$i]);
+        // $distance += abs($testDigit[$i] - $knownDigit[$i]); // Simple
+        $distance += pow($testDigit[$i] - $knownDigit[$i], 2); // Euclidian
     }
 
-    return $distance;
+    // return $distance; // Simple
+    return sqrt($distance); // Euclidian
 }
 
 // 9. WRITING THE CLASSIFIER FUNCTION
