@@ -119,8 +119,9 @@ $dataNumbers = array_map( function ($stringArray) { return array_map('intval', $
 // Enjoy!
 
 /**
- * @param int $testDigit
- * @param int $knownDigit
+ * @param int[] $testDigit
+ * @param int[] $knownDigit
+ *
  * @return int
  */
 function calculateDistance( $testDigit, $knownDigit) {
@@ -137,8 +138,8 @@ function calculateDistance( $testDigit, $knownDigit) {
 }
 
 /**
- * @param array $trainingData
- * @param array $unknownPixels
+ * @param DigitRecord[] $trainingData
+ * @param int[]         $unknownPixels
  *
  * @return int
  */
