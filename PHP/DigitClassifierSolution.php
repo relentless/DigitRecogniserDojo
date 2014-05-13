@@ -64,7 +64,15 @@ $validationData = array_slice($dataRecords, 1600);
 
 function calculateDistance($testDigit, $knownDigit)
 {
-    return abs($testDigit - $knownDigit);
+    $pixels   = count($testDigit);
+    $distance = 0;
+    for ($i = 0; $i < $pixels; $i++) {
+        // $distance += abs($testDigit[$i] - $knownDigit[$i]); // Simple
+        $distance += pow($testDigit[$i] - $knownDigit[$i], 2); // Euclidian
+    }
+
+    // return $distance; // Simple
+    return sqrt($distance); // Euclidian
 }
 
 // 9. WRITING THE CLASSIFIER FUNCTION
@@ -72,12 +80,8 @@ function calculateDistance($testDigit, $knownDigit)
 function classify($trainingData, $unknownPixels)
 {
     $neighbors = [];
-    foreach ($trainingData as $i => $test) {
-        $distances = [];
-        foreach ($test->Pixels as $j => $pixel) {
-            $distances[] = calculateDistance($unknownPixels[$j], $pixel);
-        }
-        $neighbors[$i] = array_sum($distances);
+    foreach ($trainingData as $i => $knownDigit) {
+        $neighbors[$i] = calculateDistance($unknownPixels, $knownDigit->Pixels);
     }
 
     asort($neighbors);
@@ -107,6 +111,3 @@ foreach ($validationData as $i => $record) {
     //Visualiser::Draw("$actual == $predicted ?" , $record->Pixels);
     echo "Actual: $actual, Predicted: $predicted, Accuracy: $accuracy %", PHP_EOL;
 }
-
-// 12. NEXT STEPS
-
